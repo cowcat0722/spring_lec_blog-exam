@@ -5,6 +5,8 @@ import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import shop.mtcoding.blog._core.Constant;
+import shop.mtcoding.blog._core.PagingUtil;
 
 import java.util.List;
 
@@ -22,8 +24,13 @@ public class BoardRepository {
         return board;
     }
 
-    public List<Board> findAll() {
-        Query query = em.createNativeQuery("select * from board_tb order by id desc", Board.class);
+    public List<Board> findAll(int page) {
+        int value = page * Constant.PAGING_COUNT;
+        Query query = em.createNativeQuery("select * from board_tb order by id desc limit ?,?", Board.class);
+
+        query.setParameter(1,value);
+        query.setParameter(2,Constant.PAGING_COUNT);
+
         List<Board> boardList = query.getResultList();
         return boardList;
     }
@@ -55,5 +62,13 @@ public class BoardRepository {
         query.setParameter(4,id);
 
         query.executeUpdate();
+    }
+
+    public int count() {
+        Query query = em.createNativeQuery("select count(*) from board_tb");
+
+        int totalCount = ((Number) query.getSingleResult()).intValue();
+
+        return totalCount;
     }
 }
