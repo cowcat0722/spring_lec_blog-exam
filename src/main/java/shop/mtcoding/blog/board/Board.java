@@ -12,6 +12,6 @@ public class Board {
     private int id;
     private String title;
     private String content;
-    private String username;
+    private String author;
 }
 
