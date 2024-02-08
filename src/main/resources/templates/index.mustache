@@ -14,7 +14,7 @@
         </thead>
 
         <tbody>
-        {{#boardList}}
+        {{#index.boardList}}
             <tr>
                 <td>{{id}}</td>
                 <td>{{title}}</td>
@@ -31,16 +31,16 @@
                     </div>
                 </td>
             </tr>
-        {{/boardList}}
+        {{/index.boardList}}
         </tbody>
     </table>
     <ul class="pagination d-flex justify-content-center">
-        <li class="page-item {{#first}}disabled{{/first}}"><a class="page-link" href="?page={{prevPage}}">Previous</a></li>
-        {{#pagingNumber}}
+        <li class="page-item {{#index.first}}disabled{{/index.first}}"><a class="page-link" href="?page={{index.prevPage}}">Previous</a></li>
+        {{#index.pagingNumber}}
             {{! 현재 페이지만 active 구현 하고싶은데 실패 / 머스테치의 for문 내부에서 구현해낼 로직을 작성하기 어렵다.}}
             <li class="page-item"><a class="page-link " href="?page={{.}}" >{{.}}</a></li>
-        {{/pagingNumber}}
-        <li class="page-item {{#last}}disabled{{/last}}"><a class="page-link" href="?page={{nextPage}}">Next</a></li>
+        {{/index.pagingNumber}}
+        <li class="page-item {{#index.last}}disabled{{/index.last}}"><a class="page-link" href="?page={{index.nextPage}}">Next</a></li>
     </ul>
 
 </div>

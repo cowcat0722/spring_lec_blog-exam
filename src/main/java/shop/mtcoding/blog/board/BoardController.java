@@ -26,13 +26,13 @@ public class BoardController {
     @GetMapping("/")
     public String index(HttpServletRequest request, @RequestParam(defaultValue = "1") int page) {
         List<Board> boardList = boardRepository.findAll(page);
-        request.setAttribute("boardList",boardList);
+//        request.setAttribute("boardList",boardList);
 
         int currentPage = page;
         int nextPage = currentPage+1;
         int prevPage = currentPage-1;
-        request.setAttribute("nextPage",nextPage);
-        request.setAttribute("prevPage",prevPage);
+//        request.setAttribute("nextPage",nextPage);
+//        request.setAttribute("prevPage",prevPage);
 
         boolean first = PagingUtil.isFirst(currentPage);
         int totalCount = boardRepository.count();
@@ -40,14 +40,24 @@ public class BoardController {
         int totalPageCount = PagingUtil.getTotalPageCount(totalCount);
 
         boolean last = PagingUtil.isLast(currentPage,totalCount);
-        request.setAttribute("first",first);
-        request.setAttribute("last",last);
+//        request.setAttribute("first",first);
+//        request.setAttribute("last",last);
 
         int[] pagingNumber = new int[totalPageCount];
         for (int i = 0; i <pagingNumber.length ; i++) {
             pagingNumber[i] = i+1;
         }
-        request.setAttribute("pagingNumber",pagingNumber);
+//        request.setAttribute("pagingNumber",pagingNumber);
+
+        HashMap<String, Object> setAttribute = new HashMap<>();
+        setAttribute.put("boardList",boardList);
+        setAttribute.put("nextPage",nextPage);
+        setAttribute.put("prevPage",prevPage);
+        setAttribute.put("first",first);
+        setAttribute.put("last",last);
+        setAttribute.put("pagingNumber",pagingNumber);
+
+        request.setAttribute("index",setAttribute);
 
         return "index";
     }
