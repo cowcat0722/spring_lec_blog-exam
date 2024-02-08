@@ -7,7 +7,7 @@ public class BoardRequest {
 
     @AllArgsConstructor
     @Data
-    public static class SaveDTO{
+    public static class SaveOrUpdateDTO{
         private String author;
         private String title;
         private String content;

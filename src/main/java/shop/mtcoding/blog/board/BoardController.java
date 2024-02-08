@@ -36,14 +36,15 @@ public class BoardController {
     }
 
     @PostMapping("/board/save")
-    public String save(BoardRequest.SaveDTO saveDTO){
+    public String save(BoardRequest.SaveOrUpdateDTO saveDTO){
 
         boardRepository.save(saveDTO);
         return "redirect:/";
     }
 
     @PostMapping("/board/{id}/update")
-    public String update(@PathVariable int id){
+    public String update(@PathVariable int id,BoardRequest.SaveOrUpdateDTO updateDTO){
+        boardRepository.update(id,updateDTO);
         return "redirect:/";
     }
 
