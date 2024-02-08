@@ -16,9 +16,11 @@ insert into board_tb(title, content, author) values('제목13','내용13','백�
 insert into board_tb(title, content, author) values('제목14','내용14','백종원');
 insert into board_tb(title, content, author) values('제목15','내용15','백종원');
 
-insert into board_tb(title, content, author) values('제목11','내용11','백종원');
-insert into board_tb(title, content, author) values('제목12','내용12','백종원');
-insert into board_tb(title, content, author) values('제목13','내용13','백종원');
-insert into board_tb(title, content, author) values('제목14','내용14','백종원');
-insert into board_tb(title, content, author) values('제목15','내용15','백종원');
-insert into board_tb(title, content, author) values('제목15','내용15','백종원');
+insert into board_tb(title, content, author) values('제목16','내용16','이상혁');
+insert into board_tb(title, content, author) values('제목17','내용17','이상혁');
+insert into board_tb(title, content, author) values('제목18','내용18','이상혁');
+insert into board_tb(title, content, author) values('제목19','내용19','이상혁');
+insert into board_tb(title, content, author) values('제목20','내용20','이상혁');
+
+insert into board_tb(title, content, author) values('제목21','내용21','박찬혁');
+
