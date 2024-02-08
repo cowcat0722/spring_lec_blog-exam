@@ -21,7 +21,7 @@ public class BoardController {
     private final BoardRepository boardRepository;
 
     @GetMapping("/")
-    public String index(HttpServletRequest request, @RequestParam(defaultValue = "0") int page) {
+    public String index(HttpServletRequest request, @RequestParam(defaultValue = "1") int page) {
         List<Board> boardList = boardRepository.findAll(page);
         request.setAttribute("boardList",boardList);
 
@@ -33,9 +33,18 @@ public class BoardController {
 
         boolean first = PagingUtil.isFirst(currentPage);
         int totalCount = boardRepository.count();
+
+        int totalPageCount = PagingUtil.getTotalPageCount(totalCount);
+
         boolean last = PagingUtil.isLast(currentPage,totalCount);
         request.setAttribute("first",first);
         request.setAttribute("last",last);
+
+        int[] arr = new int[totalPageCount];
+        for (int i = 0; i <arr.length ; i++) {
+            arr[i] = i+1;
+        }
+        request.setAttribute("arr",arr);
 
         return "index";
     }
