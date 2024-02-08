@@ -40,11 +40,11 @@ public class BoardController {
         request.setAttribute("first",first);
         request.setAttribute("last",last);
 
-        int[] arr = new int[totalPageCount];
-        for (int i = 0; i <arr.length ; i++) {
-            arr[i] = i+1;
+        int[] pagingNumber = new int[totalPageCount];
+        for (int i = 0; i <pagingNumber.length ; i++) {
+            pagingNumber[i] = i+1;
         }
-        request.setAttribute("arr",arr);
+        request.setAttribute("pagingNumber",pagingNumber);
 
         return "index";
     }
