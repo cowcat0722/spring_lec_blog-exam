@@ -39,7 +39,18 @@ public class BoardController {
     }
 
     @PostMapping("/board/save")
-    public String save(BoardRequest.SaveOrUpdateDTO saveDTO){
+    public String save(BoardRequest.SaveOrUpdateDTO saveDTO, HttpServletRequest request){
+
+        if(saveDTO.getTitle().length()>20){
+            request.setAttribute("status",400);
+            request.setAttribute("msg","title의 길이가 20자를 초과할 수 없습니다.");
+            return "error/40x";
+        }
+        if(saveDTO.getContent().length()>20){
+            request.setAttribute("status",400);
+            request.setAttribute("msg","Content의 길이가 20자를 초과할 수 없습니다.");
+            return "error/40x";
+        }
 
         boardRepository.save(saveDTO);
         return "redirect:/";
